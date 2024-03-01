@@ -23,6 +23,7 @@ export class AppComponent {
   }
 
   loadTrains(): void {
+    this.viewContainerRef?.clear();
     loadRemoteModule('mfe1', './Component').then((m) => {
       this.viewContainerRef!.createComponent(m.AppComponent);
     });
