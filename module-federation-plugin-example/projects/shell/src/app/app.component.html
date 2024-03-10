@@ -1,15 +1,10 @@
-<div #remoteComponentContainer>
-</div>
+
 {{ auth.userName }}
 
 <div *ngIf="instance">
   <div *ngIf="instance.onAppStateChanged | async as stringifiedAppState">
     <p>INCOMING FROM MFE 1 ::: {{ stringifiedAppState }}</p>
   </div>
-</div>
-
-<div>
-    <button (click)="sendSettingsToMFE1()">SendSettingsToMFE1</button>
 </div>
 
 <ul>
@@ -19,3 +14,7 @@
 </ul>
 
 <router-outlet></router-outlet>
+
+
+<div #remoteComponentContainer>
+</div>
