@@ -1,5 +1,15 @@
 <div id="container">
     <div>
+        <img src="../../../assets/angular.png" width="50">
+    </div>
+    <div>
+        {{ auth.userName }}
+    </div>
+    <div>
+        <button (click)="sendStateToShell()">sendStateToShell</button>
+    </div>
+    <div>
+        {{ expectedAppState! }}
         <img src="../../../assets/ev.png" width="100%">
     </div>
 </div>

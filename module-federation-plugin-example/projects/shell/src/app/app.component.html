@@ -1,11 +1,21 @@
 <div #remoteComponentContainer>
 </div>
+{{ auth.userName }}
+
+<div *ngIf="instance">
+  <div *ngIf="instance.onAppStateChanged | async as stringifiedAppState">
+    <p>INCOMING FROM MFE 1 ::: {{ stringifiedAppState }}</p>
+  </div>
+</div>
+
+<div>
+    <button (click)="sendSettingsToMFE1()">SendSettingsToMFE1</button>
+</div>
 
 <ul>
-    <li><img src="../assets/angular.png" width="50"></li>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/trains">Trains</a></li>
+  <li><img src="../assets/angular.png" width="50"></li>
+  <li><a routerLink="/">Home</a></li>
+  <li><a routerLink="/trains">Trains</a></li>
 </ul>
 
 <router-outlet></router-outlet>
-
