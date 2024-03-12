@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
+import { FilterService } from '@demo/filter';
 
 @Component({
   selector: 'app-root',
@@ -16,17 +17,26 @@ import { AuthService } from '@demo/auth';
 export class AppComponent implements OnInit {
   @Input() expectedAppState: string;
   @Output() onAppStateChanged = new EventEmitter<string>();
+  filter: string = '';
 
-  // declarations IS USED FOR COMMUNICATION WITH MODULE FEDERATION 
-  static declarations = AppComponent;
+  static declarations = AppComponent; // !! IS USED FOR COMMUNICATION WITH MODULE FEDERATION !!
 
   private previousExpectedAppState: string = '';
   public auth = inject(AuthService);
+  public filterService = inject(FilterService);
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log('userName', this.auth.userName);
+    this.filterService.getFilter().subscribe(filter => {
+      this.filter = filter;
+      // Update chart data based on the filter value
+      this.updateChartData();
+    });
+  }
+
+  updateChartData(): void {
+    // Implement logic to update chart data based on the filter value
   }
 
   ngAfterViewInit(): void {

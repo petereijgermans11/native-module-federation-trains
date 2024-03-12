@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { Component, ComponentRef, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
+import { FilterService } from '@demo/filter';
+import { FilterComponent } from './filter/filter.component';
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    FilterComponent
   ],
   templateUrl: './app.component.html'
 })
@@ -23,7 +26,7 @@ export class AppComponent {
   public instance: any;
   private stringifiedAppState = 'update from SHELL';
 
-  constructor() {
+  constructor(private filterService: FilterService) {
     this.auth.userName = 'Jane Doe';
   }
 

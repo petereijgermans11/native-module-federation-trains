@@ -1,6 +1,8 @@
 
 {{ auth.userName }}
 
+<app-filter></app-filter>
+
 <div *ngIf="instance">
   <div *ngIf="instance.onAppStateChanged | async as stringifiedAppState">
     <p>INCOMING FROM MFE 1 ::: {{ stringifiedAppState }}</p>

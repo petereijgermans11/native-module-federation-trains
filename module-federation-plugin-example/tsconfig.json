@@ -5,6 +5,9 @@
     "paths": {
       "@demo/auth": [
         "projects/auth/src/public-api.ts"
+      ],
+      "@demo/filter": [
+        "projects/filter/src/public-api.ts"
       ]
     },
     "baseUrl": "./",
