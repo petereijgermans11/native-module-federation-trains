@@ -6,6 +6,7 @@ import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
 import { FilterComponent } from './filter/filter.component';
 import { Subscription } from 'rxjs';
+import { Task } from './task/task';
 
 @Component({
   standalone: true,
@@ -21,21 +22,26 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   // ViewContainerRef to dynamically create components
   @ViewChild('remoteComponentContainer', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
-  routerSubscription: Subscription;
+  private routerSubscription: Subscription;
 
   public title = 'shell';
-  public auth = inject(AuthService);
   private componentRef: ComponentRef<any> | undefined;
   public instance: any;
-  private stringifiedAppState = 'update from SHELL';
+  private stringifiedAppState = '';
+  private filter = false;
+  public tasks: Task[] = [];
 
-  constructor(private filterService: FilterService, private router: Router) {
+  constructor(private filterService: FilterService, private router: Router, public auth: AuthService) {
     this.auth.userName = 'Jane Doe';
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.viewContainerRef?.clear();
       }
     });
+
+    this.filterService.getFilter().subscribe(filter => {
+      this.filter = filter;
+    })
   }
 
   public loadEmplacement(): void {
@@ -51,14 +57,23 @@ export class AppComponent {
     this.instance = this.componentRef.instance;
 
     // Subscribe to the output event if needed (e.g., for passing data back to the parent component)
-    this.instance!.onAppStateChanged;
+    this.instance!.onAppStateChanged.subscribe((stringifiedAppState: string) => {
+      const newTask: Task = JSON.parse(stringifiedAppState);
+      this.tasks.push(newTask);
+    });
 
     // Pass the stringifiedAppState to the component
     this.instance.expectedAppState = this.stringifiedAppState;
   }
 
-  public loadConfig() {
-    this.instance.expectedAppState = 'NEW SETTINGS LOADED';
+  // public loadConfig() {
+  //   this.instance.expectedAppState = 'NEW SETTINGS LOADED';
+  // }
+
+  public getAppClass() {
+    return {
+      'filtered-app': this.filter
+    };
   }
 
   ngOnDestroy() {
