@@ -14,7 +14,8 @@ import { FilterComponent } from './filter/filter.component';
     CommonModule,
     FilterComponent
   ],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   // ViewContainerRef to dynamically create components
@@ -60,6 +61,10 @@ export class AppComponent {
 
     // Pass the stringifiedAppState to the component
     this.instance.expectedAppState = this.stringifiedAppState;
+  }
+
+  public loadConfig() {
+    this.instance.expectedAppState = 'LOAD CONFIG !';
   }
 }
 

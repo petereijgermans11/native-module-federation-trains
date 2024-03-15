@@ -12,7 +12,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void { }
 
   // Method to update the filter value
-  updateFilter(filter: string): void {
+  updateFilter(filter: boolean): void {
     this.filterService.updateFilter(filter);
   }
 }

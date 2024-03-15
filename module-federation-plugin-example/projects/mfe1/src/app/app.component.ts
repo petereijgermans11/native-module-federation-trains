@@ -17,7 +17,7 @@ import { FilterService } from '@demo/filter';
 export class AppComponent implements OnInit {
   @Input() expectedAppState: string;
   @Output() onAppStateChanged = new EventEmitter<string>();
-  filter: string = '';
+  filter: boolean = false;
 
   static declarations = AppComponent; // !! IS USED FOR COMMUNICATION WITH MODULE FEDERATION !!
 
@@ -30,9 +30,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.filterService.getFilter().subscribe(filter => {
       this.filter = filter;
-      // Update chart data based on the filter value
-      this.updateChartData();
-    });
+    })
   }
 
   updateChartData(): void {
@@ -46,10 +44,11 @@ export class AppComponent implements OnInit {
   ngOnChangesCustom() {
     if (this.expectedAppState !== this.previousExpectedAppState && this.expectedAppState) {
       this.previousExpectedAppState = this.expectedAppState;
+      // do something!!!
     }
   }
 
-  sendStateToShell() {
+  saveConfiguration() {
     this.onAppStateChanged.emit(JSON.stringify('update from MFE 1 !!!!!'));
   }
 

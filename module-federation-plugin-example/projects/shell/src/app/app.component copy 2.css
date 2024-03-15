@@ -1,3 +1,4 @@
+
 .container {
   display: flex;
   flex-direction: column;
@@ -13,8 +14,10 @@
   background-color: black; /* Set navbar background color to black */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px 20px; /* Adjust padding as needed */
   z-index: 1000; /* Ensure the navbar stays on top of other content */
+  color: white;
 }
 
 .navbar li {
@@ -29,22 +32,12 @@
   width: 50px;
 }
 
-.navbar a {
-  color: white; /* Set link color to white */
-  text-decoration: none; /* Remove default underline */
-}
-
 .button-container {
   margin-top: 60px; /* Adjust margin top to account for the fixed navbar height */
-  align-self: flex-start; 
 }
 
 .mfe-container {
   margin-top: 20px;
-}
-
-.app-filter {
-  align-self: flex-start; /* Align the app-filter component to the left */
 }
 
 /* Adjust styles as needed */
