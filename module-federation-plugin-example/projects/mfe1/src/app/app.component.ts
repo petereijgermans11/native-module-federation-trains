@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
 import { NotificationBarComponent } from './notification-bar/notification-bar.component';
 import { Task } from './task/task';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +15,16 @@ import { Task } from './task/task';
   imports: [
     RouterModule,
     CommonModule,
-    NotificationBarComponent
+    NotificationBarComponent,
+    ReactiveFormsModule
   ],
 })
 export class AppComponent implements OnInit {
+  @ViewChild('taskNameInput') taskNameInputRef!: ElementRef<HTMLInputElement>; 
+  
   @Input() expectedAppState: string;
   @Output() onAppStateChanged = new EventEmitter<string>();
   private filter: boolean = false;
-
-  static declarations = AppComponent; // !! IS USED FOR COMMUNICATION WITH MODULE FEDERATION !!
-
   private previousExpectedAppState: string = '';
 
   constructor(public auth: AuthService, private filterService: FilterService) { }
@@ -51,13 +52,16 @@ export class AppComponent implements OnInit {
     };
   }
 
-  public addTaskToCart() {
+  addTaskToCart(taskName: string) {
     const newTask: Task = {
       id: Math.floor(Math.random() * 1000), // Generate a random ID (you can use a proper ID generation logic)
-      name: 'Example Task',
+      name: taskName, // Use the task name entered by the user
       date: new Date()
     };
     this.onAppStateChanged.emit(JSON.stringify(newTask));
+    
+    // Clear the input field after adding the task
+    this.taskNameInputRef.nativeElement.value = '';
   }
 
 }

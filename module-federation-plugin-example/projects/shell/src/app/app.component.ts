@@ -47,7 +47,7 @@ export class AppComponent {
   public loadEmplacement(): void {
     this.viewContainerRef?.clear();
     loadRemoteModule('mfe1', './Component').then((module) => {
-        this.dynamicallyCreateComponent(module);
+      this.dynamicallyCreateComponent(module);
     });
   }
 
@@ -60,15 +60,18 @@ export class AppComponent {
     this.instance!.onAppStateChanged.subscribe((stringifiedAppState: string) => {
       const newTask: Task = JSON.parse(stringifiedAppState);
       this.tasks.push(newTask);
+      if (this.tasks.length > 2) {
+        this.sendMessage();
+      }
     });
 
     // Pass the stringifiedAppState to the component
     this.instance.expectedAppState = this.stringifiedAppState;
   }
 
-  // public loadConfig() {
-  //   this.instance.expectedAppState = 'NEW SETTINGS LOADED';
-  // }
+  public sendMessage() {
+    this.instance.expectedAppState = 'Amount of tasks exceeds 2';
+  }
 
   public getAppClass() {
     return {

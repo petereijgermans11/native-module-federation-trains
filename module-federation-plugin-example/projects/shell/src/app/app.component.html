@@ -17,10 +17,6 @@
     <button (click)="loadEmplacement()">Emplacement</button>
   </div>
 
-  <!-- <div class="button-container">
-    <button (click)="loadConfig()">Load Setting</button>
-  </div> -->
-
   <div #remoteComponentContainer></div>
 
   <ul class="navbar">
@@ -29,7 +25,6 @@
     <li><a routerLink="/trains">Trains</a></li>
     <li><app-filter class="app-filter"></app-filter></li>
     <li class="user-name">{{ auth.userName }}</li>
-  
   </ul>
 
   <router-outlet></router-outlet>

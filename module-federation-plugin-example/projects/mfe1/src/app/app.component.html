@@ -1,14 +1,17 @@
 <div class="container" [ngClass]="getAppClass()">
-    <div class="item">
-      <img src="../../../assets/angular.png" width="50">
-    </div>
-    <div class="item">{{ auth.userName }}</div>
-    <div class="item">
-      <button (click)="addTaskToCart()">add Task to Cart</button>
-    </div>
+  <div class="item">
+    <img src="../../../assets/angular.png" width="50">
+  </div>
+  <div *ngIf="auth.userName" class="item auth">
+    {{ auth.userName }}
+  </div>
+  <div class="item">
+    <input class="input-line" type="text" #taskNameInput placeholder="Add task">
     <div class="appstate"> {{ expectedAppState! }}</div>
-    <div>
-      <img src="../../../assets/ev.png" width="100%">
-    </div>
+    <button (click)="addTaskToCart(taskNameInput.value)">Add task</button>
+  </div>
+  <div>
+    <img src="../../../assets/ev.png" width="100%">
+  </div>
 </div>
-  
+

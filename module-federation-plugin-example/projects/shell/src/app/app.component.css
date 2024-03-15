@@ -95,25 +95,45 @@ button:hover {
 }
 
 .cart {
+  background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
-  background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  max-width: 300px;
 }
 
 .cart h2 {
+  font-size: 18px;
   margin-top: 0;
 }
 
-.cart ul {
-  list-style-type: none;
-  padding: 0;
+.cart ul li {
+  margin-bottom: 10px; /* Add some spacing between cart items */
+  padding-bottom: 10px; /* Add padding to the bottom of each cart item */
+  border-bottom: 1px solid #eee; /* Add a separator between cart items */
 }
 
-.cart ul li {
-  margin-bottom: 5px;
+.cart ul li:last-child {
+  border-bottom: none; /* Remove border from the last cart item */
 }
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item-name {
+  flex: 1; /* Allow name to take up remaining space */
+  margin-right: 10px; /* Add margin between name and price */
+}
+
+.cart-item span {
+  font-weight: bold;
+  color: #007bff; /* Change price color */
+}
+
 
 
 

@@ -13,13 +13,20 @@
     text-align: left; /* Align text content to the left */
     color: black; 
   }
+
+  .auth {
+    margin-left: auto; /* Move to the right */
+    padding: 5px 10px; /* Add padding */
+    background-color: orange; /* Orange background color */
+    color: white;
+  }
   
   .filter {
     flex-basis: 100%;
   }
 
   .appstate {
-    color: black;
+    color: red;
   }
   
   input[type=text] {
@@ -59,5 +66,19 @@
   .filtered-app {
     background-color: black;
   }
+
+  .input-line {
+    border: none; /* Remove border */
+    border-bottom: 1px solid black; /* Add a bottom border */
+    background-color: transparent; /* Make background transparent */
+    outline: none; /* Remove outline */
+    padding: 0; /* Remove padding */
+  }
+  
+  .input-line:focus {
+    border-color: #d7710a;
+  }
+  
+  
 
   
