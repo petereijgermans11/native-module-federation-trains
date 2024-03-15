@@ -14,7 +14,7 @@
   padding: 10px 20px; /* Padding around navbar items */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Align items at the start and end */
+  justify-content: flex-start; /* Align items at the start and end */
   list-style-type: none; /* Remove bullet points */
 }
 
@@ -134,7 +134,11 @@ button:hover {
   color: #007bff; /* Change price color */
 }
 
-
+.navbar-links {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 20px; /* Add spacing between left info and links */
+}
 
 
 /* Adjust styles as needed */
