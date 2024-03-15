@@ -14,7 +14,7 @@ export const APP_ROUTES: Routes = [
 
   // Add this route:
   {
-    path: 'trains',
+    path: 'emplacement',
     loadComponent: () =>
       loadRemoteModule('mfe1', './Component').then((m) => m.AppComponent),
   },
@@ -23,7 +23,4 @@ export const APP_ROUTES: Routes = [
     path: '**',
     component: NotFoundComponent,
   },
-
-  // DO NOT insert routes after this one.
-  // { path:'**', ...} needs to be the LAST one.
 ];
