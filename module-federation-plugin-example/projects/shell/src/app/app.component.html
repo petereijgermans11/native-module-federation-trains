@@ -1,24 +1,30 @@
 <div class="container">
-  <ul class="navbar">
-    <li><img src="../assets/angular.png" width="50"></li>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/trains">Trains</a></li>
-    <li><div>{{auth.userName}}</div></li>
-  </ul>
-
-  <router-outlet></router-outlet>
-
+  
   <app-filter class="app-filter"></app-filter>
 
   <div class="button-container">
-    <button (click)="loadConfig()">Load Configuration</button>
+    <button (click)="loadEmplacement()">Emplacement</button>
   </div>
 
-  <div class="mfe-container" *ngIf="instance">
+  <div class="button-container">
+    <button (click)="loadConfig()">Load Setting</button>
+  </div>
+
+  <div class="notificatie" *ngIf="instance">
     <div *ngIf="instance.onAppStateChanged | async as stringifiedAppState">
-      <p>INCOMING FROM MFE 1 ::: {{ stringifiedAppState }}</p>
+      <p>{{ stringifiedAppState }}</p>
     </div>
   </div>
 
   <div #remoteComponentContainer></div>
+
+  <ul class="navbar">
+    <li><img src="../assets/angular.png" width="50"></li>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/trains">Trains</a></li>
+    <li class="user-name"><div>{{ auth.userName }}</div></li>
+  </ul>
+
+  <router-outlet></router-outlet>
+
 </div>

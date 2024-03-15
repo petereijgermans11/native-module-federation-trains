@@ -5,6 +5,7 @@
     border: 2px darkred dashed;
     padding: 20px;
     color: black;
+    position: relative;
   }
   
   .item {
@@ -51,4 +52,5 @@
   .top-nav {
     margin-bottom: 20px;
   }
+
   

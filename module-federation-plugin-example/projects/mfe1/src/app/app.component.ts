@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
+import { NotificationBarComponent } from './notification-bar/notification-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { FilterService } from '@demo/filter';
   styleUrls: ['./app.component.css'],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    NotificationBarComponent
   ],
 })
 export class AppComponent implements OnInit {
@@ -33,10 +35,6 @@ export class AppComponent implements OnInit {
     })
   }
 
-  updateChartData(): void {
-    // Implement logic to update chart data based on the filter value
-  }
-
   ngAfterViewInit(): void {
     this.ngOnChangesCustom();
   }
@@ -49,7 +47,9 @@ export class AppComponent implements OnInit {
   }
 
   saveConfiguration() {
-    this.onAppStateChanged.emit(JSON.stringify('update from MFE 1 !!!!!'));
+    this.onAppStateChanged.emit(JSON.stringify('SAVE SETTINGS !!!!!'));
   }
+
+  
 
 }

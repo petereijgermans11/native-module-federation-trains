@@ -1,10 +1,11 @@
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { CommonModule } from '@angular/common';
 import { Component, ComponentRef, ViewChild, ViewContainerRef, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NavigationStart, Router, RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
 import { FilterComponent } from './filter/filter.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -20,6 +21,7 @@ import { FilterComponent } from './filter/filter.component';
 export class AppComponent {
   // ViewContainerRef to dynamically create components
   @ViewChild('remoteComponentContainer', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
+  routerSubscription: Subscription;
 
   public title = 'shell';
   public auth = inject(AuthService);
@@ -27,32 +29,24 @@ export class AppComponent {
   public instance: any;
   private stringifiedAppState = 'update from SHELL';
 
-  constructor(private filterService: FilterService) {
+  constructor(private filterService: FilterService, private router: Router) {
     this.auth.userName = 'Jane Doe';
-  }
-
-  public ngOnInit(): void {
-    this.loadTrains();
-  }
-
-  public sendSettingsToMFE1() {
-    this.instance.expectedAppState = this.stringifiedAppState;
-  }
-
-  private loadTrains(): void {
-    this.viewContainerRef?.clear();
-    loadRemoteModule('mfe1', './Component').then((module) => {
-
-      if (!this.componentRef) {
-        // Dynamically create the component and attach it to the view
-        this.dynamicallyCreateComponent(module);
-      } else {
-        this.componentRef.instance.expectedAppState = this.stringifiedAppState;
+    this.routerSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.viewContainerRef?.clear();
       }
     });
   }
 
+  public loadEmplacement(): void {
+    this.viewContainerRef?.clear();
+    loadRemoteModule('mfe1', './Component').then((module) => {
+        this.dynamicallyCreateComponent(module);
+    });
+  }
+
   private dynamicallyCreateComponent(module: any) {
+    this.viewContainerRef.clear();
     this.componentRef = this.viewContainerRef!.createComponent(module.AppComponent);
     this.instance = this.componentRef.instance;
 
@@ -64,7 +58,12 @@ export class AppComponent {
   }
 
   public loadConfig() {
-    this.instance.expectedAppState = 'LOAD CONFIG !';
+    this.instance.expectedAppState = 'NEW SETTINGS LOADED';
+  }
+
+  ngOnDestroy() {
+    // Unsubscribe from router events to avoid memory leaks
+    this.routerSubscription.unsubscribe();
   }
 }
 
