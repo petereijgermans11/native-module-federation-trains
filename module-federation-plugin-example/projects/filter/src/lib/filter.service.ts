@@ -10,12 +10,12 @@ export class FilterService {
   constructor() { }
 
   // Method to update the filter value
-  updateFilter(filter: boolean): void {
+  public updateFilter(filter: boolean): void {
     this.filterSubject.next(filter);
   }
 
   // Method to get the filter value as an Observable
-  getFilter(): Observable<boolean> {
+  public getFilter(): Observable<boolean> {
     return this.filterSubject.asObservable();
   }
 }

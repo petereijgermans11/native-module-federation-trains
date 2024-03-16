@@ -52,7 +52,6 @@ export class AppComponent {
   }
 
   private dynamicallyCreateComponent(module: any) {
-    this.viewContainerRef.clear();
     this.componentRef = this.viewContainerRef!.createComponent(module.AppComponent);
     this.instance = this.componentRef.instance;
 
@@ -64,9 +63,6 @@ export class AppComponent {
         this.sendMessage();
       }
     });
-
-    // Pass the stringifiedAppState to the component
-    this.instance.expectedAppState = this.stringifiedAppState;
   }
 
   public sendMessage() {
