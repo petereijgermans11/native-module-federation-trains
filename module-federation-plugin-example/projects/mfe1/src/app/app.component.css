@@ -17,7 +17,7 @@
   .auth {
     margin-left: auto; /* Move to the right */
     padding: 5px 10px; /* Add padding */
-    background-color: orange; /* Orange background color */
+    background-color: rgb(182, 32, 37); /* Orange background color */
     color: white;
   }
   
@@ -43,8 +43,8 @@
     font-size: 16px;
     font-weight: 500;
     color: #ffffff; /* Text color */
-    background-color: #ffb215; /* Background color */
-    border: 2px solid #d7710a; /* Border color matches background color */
+    background-color: rgb(182, 32, 37); /* Background color */
+    border: 2px solid rgb(182, 32, 37); /* Border color matches background color */
     border-radius: 8px; /* Rounded corners */
     padding: 14px 28px; /* Increased padding for better appearance */
     margin-bottom: 20px;
@@ -54,8 +54,8 @@
   }
   
   button:hover {
-    background-color: #ffb215; /* Darker background color on hover */
-    border-color: #d7710a; /* Darker border color on hover */
+    background-color: rgb(200, 12, 18); /* Darker background color on hover */
+    border-color: rgb(200, 12, 18); /* Darker border color on hover */
     color: #ffffff; /* Change text color on hover */
   }
   
@@ -71,12 +71,14 @@
     border: none; /* Remove border */
     border-bottom: 1px solid black; /* Add a bottom border */
     background-color: transparent; /* Make background transparent */
+    color: red;
     outline: none; /* Remove outline */
     padding: 0; /* Remove padding */
   }
   
   .input-line:focus {
-    border-color: #d7710a;
+    border-color: rgb(182, 32, 37);
+    color: red;
   }
   
   
