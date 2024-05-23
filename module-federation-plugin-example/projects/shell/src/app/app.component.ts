@@ -27,18 +27,11 @@ export class AppComponent {
   public title = 'shell';
   private componentRef: ComponentRef<any> | undefined;
   public instance: any;
-  private stringifiedAppState = '';
-  private filter = false;
+  private filter = true;
   public tasks: Task[] = [];
 
-  constructor(private filterService: FilterService, private router: Router, public auth: AuthService) {
+  constructor(private filterService: FilterService,  public auth: AuthService) {
     this.auth.userName = 'Jane Doe';
-    this.routerSubscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.viewContainerRef?.clear();
-      }
-    });
-
     this.filterService.getFilter().subscribe(filter => {
       this.filter = filter;
     })
@@ -66,7 +59,7 @@ export class AppComponent {
   }
 
   public sendMessage() {
-    this.instance.expectedAppState = 'Amount of tasks exceeds 2';
+    this.instance.messageFromHost = 'Amount of tasks exceeds 2';
   }
 
   public getAppClass() {

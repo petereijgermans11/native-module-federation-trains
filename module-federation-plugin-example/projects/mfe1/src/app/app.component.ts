@@ -22,10 +22,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class AppComponent implements OnInit {
   @ViewChild('taskNameInput') taskNameInputRef!: ElementRef<HTMLInputElement>; 
   
-  @Input() expectedAppState: string;
+  @Input() messageFromHost: string;
   @Output() onAppStateChanged = new EventEmitter<string>();
   private filter: boolean = false;
-  private previousExpectedAppState: string = '';
+  private previousMessage: string = '';
 
   constructor(public auth: AuthService, private filterService: FilterService) { }
 
@@ -40,16 +40,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnChangesCustom() {
-    if (this.expectedAppState !== this.previousExpectedAppState && this.expectedAppState) {
-      this.previousExpectedAppState = this.expectedAppState;
+    if (this.messageFromHost !== this.previousMessage && this.messageFromHost) {
+      this.previousMessage = this.messageFromHost;
       // do something!!!
     }
-  }
-
-  public getAppClass() {
-    return {
-      'filtered-app': this.filter // Apply 'filtered-app' class when filter is true
-    };
   }
 
   addTaskToCart(taskName: string) {
@@ -63,5 +57,13 @@ export class AppComponent implements OnInit {
     // Clear the input field after adding the task
     this.taskNameInputRef.nativeElement.value = '';
   }
+
+  public getAppClass() {
+    return {
+      'filtered-app': this.filter // Apply 'filtered-app' class when filter is true
+    };
+  }
+
+ 
 
 }

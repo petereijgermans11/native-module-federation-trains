@@ -12,7 +12,7 @@ import { FilterService } from '@demo/filter';
   ],
 })
 export class NotificationBarComponent implements OnInit {
-    @Input() expectedAppState: string;
+    @Input() messageFromHost: string;
 
     ngOnInit(): void { }
 

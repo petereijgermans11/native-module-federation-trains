@@ -7,7 +7,7 @@
   </div>
   <div class="item">
     <input class="input-line" type="text" #taskNameInput placeholder="Add task">
-    <div class="appstate"> {{ expectedAppState! }}</div>
+    <div class="message-from-host"> {{ messageFromHost! }}</div>
     <button (click)="addTaskToCart(taskNameInput.value)">Add task</button>
   </div>
   <div>
