@@ -1,12 +1,12 @@
 <div class="cart-container">
     <div class="cart">
-      <h2>Tasks for {{ auth.userName }}</h2>
-      <ul>
-        @for (task of tasks; track task) {
-        <li>
-          {{ task.id }} - {{ task.name }} - {{ task.date | date }}
-        </li>
-        }
-      </ul>
+        <h2>Tasks for {{ auth.userName }}</h2>
+        <ul>
+            @for (task of tasks; track task) {
+            <li>
+                {{ task.id }} - {{ task.name }} - {{ task.date | date }}
+            </li>
+            }
+        </ul>
     </div>
-  </div>
+</div>

@@ -5,13 +5,15 @@ import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
 import { FilterComponent } from './filter/filter.component';
 import { Task } from './task/task';
+import { CartComponent } from './cart/cart.component';
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [
     CommonModule,
-    FilterComponent
+    FilterComponent,
+    CartComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
