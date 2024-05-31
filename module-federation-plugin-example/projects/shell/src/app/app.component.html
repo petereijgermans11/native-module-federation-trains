@@ -1,18 +1,28 @@
 <div class="container" [ngClass]="getAppClass()">
 
-
+@defer (on hover; prefetch on timer(5000)) {
   <div class="cart-container">
     <div class="cart">
       <h2>Tasks for {{ auth.userName }}</h2>
       <ul>
         @for (task of tasks; track task) {
-          <li>
-            {{ task.id }} - {{ task.name }} - {{ task.date | date }}
-          </li>
+        <li>
+          {{ task.id }} - {{ task.name }} - {{ task.date | date }}
+        </li>
         }
       </ul>
     </div>
   </div>
+} @placeholder() {
+  <!-- try adding "minimum: 100" & playing around with various values -->
+  <!-- explore @placeholder & @loading interactions with various settings -->
+  
+} @loading(minimum 1000) { 
+  <!-- try adding "after 100;" and the @loading block wont be displayed! -->
+  
+} @error {
+  <p class="text-red-500">Something went wrong...<p>
+}
 
 
   <div class="button-container">
@@ -20,22 +30,16 @@
   </div>
 
 
-
   <div #remoteComponentContainer></div>
-
-
-
-
-
 
 
 
   <ul class="navbar">
     <li><img src="../assets/angular.gif" width="50"></li>
     <li class="navbar-links">
-      <li><a routerLink="/">Home</a></li>
-      <li><app-filter class="app-filter"></app-filter></li>
-      <li>
-      </ul>
 
-    </div>
+    <li><app-filter class="app-filter"></app-filter></li>
+    <li>
+  </ul>
+
+</div>

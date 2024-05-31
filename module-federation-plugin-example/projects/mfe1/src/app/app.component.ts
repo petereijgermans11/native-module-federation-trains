@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
 import { NotificationBarComponent } from './notification-bar/notification-bar.component';
 import { Task } from './task/task';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   imports: [
-    RouterModule,
     CommonModule,
     NotificationBarComponent,
     ReactiveFormsModule

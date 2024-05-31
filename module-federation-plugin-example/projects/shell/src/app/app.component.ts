@@ -1,18 +1,15 @@
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { CommonModule } from '@angular/common';
 import { Component, ComponentRef, ViewChild, ViewContainerRef, inject } from '@angular/core';
-import { NavigationStart, Router, RouterModule } from '@angular/router';
 import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
 import { FilterComponent } from './filter/filter.component';
-import { Subscription } from 'rxjs';
 import { Task } from './task/task';
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [
-    RouterModule,
     CommonModule,
     FilterComponent
   ],
@@ -22,7 +19,6 @@ import { Task } from './task/task';
 export class AppComponent {
   // ViewContainerRef to dynamically create components
   @ViewChild('remoteComponentContainer', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
-  private routerSubscription: Subscription;
 
   public title = 'shell';
   private componentRef: ComponentRef<any> | undefined;
@@ -66,11 +62,6 @@ export class AppComponent {
     return {
       'filtered-app': this.filter
     };
-  }
-
-  ngOnDestroy() {
-    // Unsubscribe from router events to avoid memory leaks
-    this.routerSubscription.unsubscribe();
   }
 }
 
