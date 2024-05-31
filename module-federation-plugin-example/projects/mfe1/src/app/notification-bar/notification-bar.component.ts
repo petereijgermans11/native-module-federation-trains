@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { FilterService } from '@demo/filter';
 
@@ -7,9 +7,7 @@ import { FilterService } from '@demo/filter';
   selector: 'app-notification-bar',
   templateUrl: './notification-bar.component.html',
   styleUrl: './notification-bar.component.css',
-  imports: [
-    CommonModule,
-  ],
+  imports: [],
 })
 export class NotificationBarComponent implements OnInit {
     @Input() messageFromHost: string;

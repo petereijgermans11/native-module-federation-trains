@@ -1,4 +1,5 @@
-<div class="notification" *ngIf="messageFromHost">
+@if (messageFromHost) {
+  <div class="notification">
     {{ messageFromHost }}
   </div>
-  
+}
