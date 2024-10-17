@@ -1,21 +1,18 @@
 <div class="container" [ngClass]="getAppClass()">
 
-
-  @defer (on interaction(emplacement)) {
   <app-cart [tasks]="tasks" [auth]="auth" />
-  }
 
 
   <div class="button-container" #emplacement>
     <button (click)="loadEmplacement()">Emplacement</button>
   </div>
 
-  @defer () {
-  <div #remoteComponentContainer></div>
-  }
+  
+  <div #placeHolder></div>
 
 
 
+  
   <ul class="navbar">
     <li><img src="../assets/angular.gif" width="50"></li>
     <li class="navbar-links">

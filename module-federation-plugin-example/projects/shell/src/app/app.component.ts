@@ -20,7 +20,7 @@ import { CartComponent } from './cart/cart.component';
 })
 export class AppComponent {
   // ViewContainerRef to dynamically create components
-  @ViewChild('remoteComponentContainer', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
+  @ViewChild('placeHolder', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
 
   public title = 'shell';
   private componentRef: ComponentRef<any> | undefined;
@@ -46,7 +46,7 @@ export class AppComponent {
     this.componentRef = this.viewContainerRef!.createComponent(module.AppComponent);
     this.instance = this.componentRef.instance;
 
-    // Subscribe to the output event if needed (e.g., for passing data back to the parent component)
+    // Subscribe to the output event if needed (e.g., for passing 'Tasks' to the parent component)
     this.instance!.onAppStateChanged.subscribe((stringifiedAppState: string) => {
       const newTask: Task = JSON.parse(stringifiedAppState);
       this.tasks.push(newTask);
