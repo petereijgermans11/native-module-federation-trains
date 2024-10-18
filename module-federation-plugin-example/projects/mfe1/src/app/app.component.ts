@@ -18,12 +18,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
 })
 export class AppComponent implements OnInit {
-  @ViewChild('taskNameInput') taskNameInputRef!: ElementRef<HTMLInputElement>; 
+  @ViewChild('taskNameInput',) taskNameInputRef!: ElementRef<HTMLInputElement>; 
   
   @Input() messageFromHost: string;
   @Output() onAppStateChanged = new EventEmitter<string>();
   private filter: boolean = false;
-  private previousMessage: string = '';
 
   constructor(public auth: AuthService, private filterService: FilterService) { }
 
@@ -33,21 +32,11 @@ export class AppComponent implements OnInit {
     })
   }
 
-  ngAfterViewInit(): void {
-    this.ngOnChangesCustom();
-  }
-
-  ngOnChangesCustom() {
-    if (this.messageFromHost !== this.previousMessage && this.messageFromHost) {
-      this.previousMessage = this.messageFromHost;
-      // do something!!!
-    }
-  }
 
   addTaskToCart(taskName: string) {
     const newTask: Task = {
-      id: Math.floor(Math.random() * 1000), // Generate a random ID (you can use a proper ID generation logic)
-      name: taskName, // Use the task name entered by the user
+      id: Math.floor(Math.random() * 1000), 
+      name: taskName,
       date: new Date()
     };
     this.onAppStateChanged.emit(JSON.stringify(newTask));

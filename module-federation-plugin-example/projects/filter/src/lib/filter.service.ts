@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FilterService {
-  private filterSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private filterSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   constructor() { }
 
