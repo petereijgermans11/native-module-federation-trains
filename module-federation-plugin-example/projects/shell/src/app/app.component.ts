@@ -46,7 +46,7 @@ export class AppComponent {
     this.componentRef = this.viewContainerRef!.createComponent(module.AppComponent);
     this.instance = this.componentRef.instance;
 
-    // Subscribe to the output event if needed (e.g., for receiving 'Tasks' to the HOST)
+    // Subscribe to the output event if needed (e.g., for receiving 'Tasks' from the HOST)
     this.instance!.onAppStateChanged.subscribe((stringifiedAppState: string) => {
       const newTask: Task = JSON.parse(stringifiedAppState);
       this.tasks.push(newTask);
