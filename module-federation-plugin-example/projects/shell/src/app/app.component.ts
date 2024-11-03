@@ -42,6 +42,13 @@ export class AppComponent {
     });
   }
 
+  public loadMFE2(): void {
+    this.viewContainerRef?.clear();
+    loadRemoteModule('mfe2', './Component').then((module) => {
+      this.dynamicallyCreateComponent(module);
+    });
+  }
+
   private dynamicallyCreateComponent(module: any) {
     this.componentRef = this.viewContainerRef!.createComponent(module.AppComponent);
     this.instance = this.componentRef.instance;

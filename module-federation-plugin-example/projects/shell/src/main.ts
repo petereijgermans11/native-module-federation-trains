@@ -20,7 +20,7 @@ switch (window.location.hostname) {
 
 let location = `/assets/manifests/manifest.${manifestEnv}.json`;
 
-if (manifestEnv === 'prod' || manifestEnv === 'bpr' || manifestEnv === 'ont') {
+if (manifestEnv === 'prod' || manifestEnv === 'acc' || manifestEnv === 'test') {
     location = window.location.pathname + location;
 }
 
