@@ -1,3 +1,4 @@
 {
-	"mfe1": "https://test.nl/remoteEntry.json"
+	"mfe1": "https://test.nl/mfe1/remoteEntry.json",
+	"mfe2": "https://test.nl/mfe2/remoteEntry.json"
 }
