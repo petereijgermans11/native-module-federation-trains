@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { AuthService } from '@demo/auth';
 import { FilterService } from '@demo/filter';
-import { NotificationBarComponent } from './notification-bar/notification-bar.component';
 import { Task } from './task/task';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -13,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./app.component.css'],
   imports: [
     CommonModule,
-    NotificationBarComponent,
     ReactiveFormsModule
   ],
 })
