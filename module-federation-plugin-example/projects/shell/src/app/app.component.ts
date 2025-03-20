@@ -19,9 +19,7 @@ import { CartComponent } from './cart/cart.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  // ViewContainerRef to dynamically create and load components
-  
-  // FIXME
+  // ViewContainerRef to dynamically create and load components  
   @ViewChild('placeHolder', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
 
   public title = 'shell';
@@ -38,15 +36,13 @@ export class AppComponent {
   }
 
   public loadEmplacement(): void {
-    // FIXME
-    //this.viewContainerRef?.clear();
+    this.viewContainerRef?.clear();
     loadRemoteModule('mfe1', './Component').then((module) => {
       this.dynamicallyCreateComponent(module);
     });
   }
 
   public loadMFE2(): void {
-    // FIXME
     this.viewContainerRef?.clear();
     loadRemoteModule('mfe2', './Component').then((module) => {
       this.dynamicallyCreateComponent(module);
@@ -54,14 +50,11 @@ export class AppComponent {
   }
 
   private dynamicallyCreateComponent(module: any) {
-
-  // FIXME  
+  
     this.componentRef = this.viewContainerRef!.createComponent(module.AppComponent);
     this.instance = this.componentRef.instance;
 
-    // Subscribe to the output event if needed (e.g., for receiving 'Tasks' from the HOST)
-
-    // FIXME
+    // Subscribe to the output event if needed (e.g., for receiving 'Tasks' from the MicroFrontend: mfe1)
     this.instance!.onAppStateChanged.subscribe((stringifiedAppState: string) => {
       const newTask: Task = JSON.parse(stringifiedAppState);
       this.tasks.push(newTask);
