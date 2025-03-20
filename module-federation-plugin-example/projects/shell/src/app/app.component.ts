@@ -48,7 +48,7 @@ export class AppComponent {
   public loadMFE2(): void {
     // FIXME
     this.viewContainerRef?.clear();
-    loadRemoteModule('mfe3', './Component').then((module) => {
+    loadRemoteModule('mfe2', './Component').then((module) => {
       this.dynamicallyCreateComponent(module);
     });
   }
