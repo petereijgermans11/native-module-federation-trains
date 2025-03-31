@@ -19,7 +19,7 @@ import { CartComponent } from './cart/cart.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  // ViewContainerRef to dynamically create and load components  
+  // ViewContainerRef to dynamically INJECT a loaded MFE into the #placeholder
   @ViewChild('placeHolder', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef | undefined;
 
   public title = 'shell';
